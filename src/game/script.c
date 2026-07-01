@@ -3402,7 +3402,10 @@ void script_unlock(int script_id)
 {
     int cache_entry_id;
 
-    if (!script_editor) {
+    // FIX: guard was inverted relative to script_lock; in gameplay it made
+    // unlock a no-op so ref_count only ever grew until the cache filled and
+    // cache_find() exit()ed. Match script_lock so unlock decrements in play.
+    if (script_editor) {
         return;
     }
 
