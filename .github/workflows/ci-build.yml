@@ -48,5 +48,5 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: arcanum-ce-windows-${{ matrix.arch }}
-          path:  out/build/windows-${{ matrix.arch }}/Debug/arcanum-ce.exe
+          path: out/build/windows-${{ matrix.arch }}/Release/arcanum-ce.exe
           retention-days: 7
